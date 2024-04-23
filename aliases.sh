@@ -7,3 +7,4 @@ export PATH="$PATH:$TODO_DIR/bin"
 
 alias dc="docker-compose"
 alias testingAliases="echo 'yay'"
+alias st="status"
