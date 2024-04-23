@@ -1,0 +1,8 @@
+FROM node:20-alpine as base
+COPY package*.json ./
+COPY yarn.lock ./
+RUN yarn install
+COPY . .
+
+FROM base as api-dev
+CMD ["yarn", "start"]
