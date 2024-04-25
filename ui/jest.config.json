@@ -1,0 +1,13 @@
+{
+  "roots": ["<rootDir>"],
+  "testEnvironment": "jest-environment-jsdom",
+  "setupFilesAfterEnv": ["<rootDir>/jest.setup.js", "jest-extended/all"],
+  "moduleNameMapper": {
+    "\\.(css|less|scss|sass)$": "babel-jest"
+  },
+  "modulePaths": ["<rootDir>"],
+  "transform": {
+    "^.+\\.(js|ts)$": "babel-jest"
+  },
+  "transformIgnorePatterns": []
+}
