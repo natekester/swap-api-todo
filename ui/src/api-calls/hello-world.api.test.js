@@ -1,11 +1,16 @@
-const { HELLO_WORLD_API } = require("./URLs");
-const { callHelloWorld } = require("./hello-world.api");
+import { HELLO_WORLD_API } from "./URLs";
+import callHelloWorld from "./hello-world.api";
+import { get } from "./fetch";
+
+jest.mock("./fetch", () => ({ get: jest.fn() }));
 
 describe("Testing the Assets Service", () => {
-  let fetchMock;
+  let mockURLCall;
 
   beforeEach(() => {
-    fetchMock = jest.spyOn("./fetch.js", "fetch");
+    mockURLCall = get;
+    console.log({ mockURLCall });
+    mockURLCall.mockResolvedValue({ test: "test" });
   });
 
   afterEach(() => {
@@ -13,15 +18,15 @@ describe("Testing the Assets Service", () => {
   });
 
   test("Fetch has been called", async () => {
-    fetchMock.mockReturnedValue(
-      Promise.resolve({
-        json: () => Promise.resolve({ test: 100 }),
-      })
-    );
+    // fetchMock.mockReturnedValue(
+    //   Promise.resolve({
+    //     json: () => Promise.resolve({ test: 100 }),
+    //   })
+    // );
 
-    await callHelloWorld();
+    const value = await callHelloWorld();
 
-    expect(fetchMock).toHaveBeenCalled();
-    expect(fetchMock).toHaveBeenCalledWith(HELLO_WORLD_API);
+    expect(mockURLCall).toHaveBeenCalled();
+    expect(mockURLCall).toHaveBeenCalledWith(HELLO_WORLD_API);
   });
 });

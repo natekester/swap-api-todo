@@ -14,6 +14,7 @@ const node_modules = path.resolve("./node_modules");
 
 export default (env, argv) => {
   const config = {
+    mode: "development",
     entry: { bundle: path.resolve(src, "entry.jsx") },
     resolve: {
       alias: { src },
@@ -41,13 +42,19 @@ export default (env, argv) => {
         // "Access-Control-Allow-Origin": "https://whitelistedsite.com"
         "X-Content-Type-Options": "nosniff",
       },
-      host: "0.0.0.0",
+      // host: "0.0.0.0",
       port: 443,
       proxy: [
         {
-          "/api": "http://api:8080", //may want to make port an env variable
+          context: ["/api"],
+          target: "http://api:8000", //may want to make port an env variable
         },
       ],
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Methods": "*",
+      },
       static: {
         directory: dist,
       },
@@ -86,18 +93,18 @@ export default (env, argv) => {
         },
       ],
     },
-    plugins:
-      argv.mode === "production"
-        ? [new WebpackAssetsManifest({})]
-        : [
-            new HtmlWebpackPlugin({
-              filename: "index.html",
-              template: "index.html",
-              chuncks: ["bundle"],
-              inject: "head",
-              scriptLoading: "defer",
-            }),
-          ],
+    plugins: [
+      new webpack.ProvidePlugin({
+        process: "process/browser.js",
+      }),
+      new HtmlWebpackPlugin({
+        filename: "index.html",
+        template: "index.html",
+        chuncks: ["bundle"],
+        inject: "head",
+        scriptLoading: "defer",
+      }),
+    ],
   };
 
   return config;

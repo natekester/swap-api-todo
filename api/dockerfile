@@ -5,4 +5,4 @@ RUN yarn install
 COPY . .
 
 FROM base as api-dev
-CMD ["yarn", "start"]
+CMD ["yarn", "dev"]

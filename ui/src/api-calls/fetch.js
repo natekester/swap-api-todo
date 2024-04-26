@@ -29,9 +29,7 @@ const request = async (url, body, method) => {
 };
 
 // all of our general api calls for CRUD
-const get = async (url) => request(url, undefined, "GET");
-const post = async (url, body) => request(url, body, "POST");
-const put = async (url, body) => request(url, body, "PUT");
-const callDel = async (url, body) => request(url, body, "DELETE");
-
-export default { get, post, put, callDel };
+export const get = async (url) => request(url, undefined, "GET");
+export const post = async (url, body) => request(url, body, "POST");
+export const put = async (url, body) => request(url, body, "PUT");
+export const callDel = async (url, body) => request(url, body, "DELETE");
