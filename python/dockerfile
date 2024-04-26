@@ -1,0 +1,7 @@
+FROM 3.13.0a6-bullseye as base
+RUN poetry install 
+RUN poetry shell
+COPY . .
+
+FROM base as api-dev
+CMD ["python3", "-m", "flask", "--app", "src/app", "--debug", "run"]
