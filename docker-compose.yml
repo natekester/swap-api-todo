@@ -13,6 +13,8 @@ services:
   api:
     build:
       context: "./${API_DIRECTORY}"
+      args:
+        API_PORT: ${API_PORT}
     depends_on:
       - postgres
     env_file: .env
