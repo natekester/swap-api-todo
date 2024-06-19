@@ -1,5 +1,4 @@
-import camelcaseKeys from "camelcase-keys";
-import knx, { KnexType } from "./knex.js";
+import knx from "./knex.js";
 
 export class BaseDb {
   tableName: string;
