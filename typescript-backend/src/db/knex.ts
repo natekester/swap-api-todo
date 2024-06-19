@@ -1,6 +1,7 @@
 import { isArray, isObject } from "lodash-es";
 import toCamelCase from "camelcase-keys";
 import { snakeCase as toSnakeCase } from "snake-case";
+import initializeKnex from "knex";
 
 const knexConfig = () => {
   const {
@@ -28,11 +29,15 @@ const knexConfig = () => {
     debug: !isTest,
     postProcessResponse: (result) =>
       isArray(result) || isObject(result) ? toCamelCase(result) : result,
-    wrapIdentifier: (value, process) =>
-      value === "*" ? process(value) : process(toSnakeCase(value)),
+    wrapIdentifier: (value, originalFunctionToWrap) =>
+      value === "*"
+        ? originalFunctionToWrap(value)
+        : originalFunctionToWrap(toSnakeCase(value)),
   };
 };
 
 export const knx = initializeKnex(knexConfig());
+
+export const KnexType = typeof knx;
 
 export default knx;
