@@ -1,6 +1,6 @@
 import knx from "./knex.js";
 
-export class BaseDb {
+export class BaseRepo {
   tableName: string;
   knx: typeof knx;
 

@@ -1,4 +1,6 @@
 FROM node:20-alpine as base
+
+WORKDIR /api
 COPY package*.json ./
 COPY yarn.lock ./
 RUN yarn install
