@@ -1,7 +1,7 @@
-import { isArray, isObject } from "lodash-es";
+import toCamelCase from "camelcase-keys";
 import initializeKnex from "knex";
 import { snakeCase as toSnakeCase } from "snake-case";
-import toCamelCase from "camelcase-keys";
+import { isArray, isObject } from "lodash-es";
 
 const knexConfig = () => {
   const {
@@ -14,6 +14,7 @@ const knexConfig = () => {
   } = process.env;
 
   const isTest = CURRENT_ENV === "test" || NODE_ENV === "test";
+  console.log({ isTest });
 
   return {
     client: "postgresql",
@@ -27,9 +28,9 @@ const knexConfig = () => {
       min: 2,
       max: 10,
     },
-    debug: !isTest,
-    // postProcessResponse: (result) =>
-    // isArray(result) || isObject(result) ? toCamelCase(result) : result,
+    debug: true,
+    postProcessResponse: (result) =>
+      isArray(result) || isObject(result) ? toCamelCase(result) : result,
     wrapIdentifier: (value, originalFunctionToWrap) =>
       value === "*"
         ? originalFunctionToWrap(value)

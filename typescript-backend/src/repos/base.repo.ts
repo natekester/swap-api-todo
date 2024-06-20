@@ -1,10 +1,7 @@
-import knx from "./knex.js";
+import knx from "./knex";
 
 export class BaseRepo {
-  tableName: string;
-  knx: typeof knx;
-
-  constructor(tableName: string, trx: typeof knx) {
+  constructor(tableName, trx) {
     this.tableName = tableName;
     //option to instantiate with a transaction for testing env
     if (trx) {
@@ -24,7 +21,7 @@ export class BaseRepo {
     return this.knx.transaction();
   }
 
-  async commitTransaction(trx: typeof knx) {
+  async commitTransaction(trx) {
     if (!trx || !trx.isTransaction) {
       throw new Error("Transaction is not defined!");
     }
@@ -35,7 +32,7 @@ export class BaseRepo {
     }
   }
 
-  async rollbackTransaction(trx: typeof knx) {
+  async rollbackTransaction(trx) {
     if (!trx || !trx.isTransaction) {
       throw new Error("Transaction is not defined!");
     }

@@ -1,8 +1,8 @@
-import { BaseRepo } from "../repos/base.repo.js";
-import { dbTables } from "../repos/dbtables.js";
-import knx from "../repos/knex.js";
+import { BaseRepo } from "../repos/base.repo";
+import { dbTables } from "../repos/dbtables";
+import knx from "../repos/knex";
 
 //enabling us to easily extend off of base class later
-export const createTodoListRepo = (trx: typeof knx = knx) => {
+export const createTodoListRepo = (trx = knx) => {
   return new BaseRepo(dbTables.todoList, trx);
 };

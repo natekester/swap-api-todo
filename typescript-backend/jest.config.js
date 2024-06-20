@@ -1,10 +1,26 @@
 export default {
-  preset: "ts-jest",
-  transform: {
-    "^.+\\.(ts|tsx)?$": "ts-jest",
-    "^.+\\.(js|jsx)$": "babel-jest",
+  //   transform: {
+  //     "^.+\\.(ts|tsx)$": "ts-jest",
+  //   },
+  extensionsToTreatAsEsm: [".ts"],
+  globals: {
+    "ts-jest": {
+      useESM: true,
+    },
   },
-  setupFilesAfterEnv: ["./setup-jest.js", "jest-extended/all"],
-  testMatch: ["**/tests/**/*.js"],
+  //   transform: {
+  //     "^.+\\.[t|j]sx?$": "babel-jest",
+  //   },
+  //   preset: "ts-jest",
+  //   transform: {
+  //     "\\.m?jsx?$": "jest-esm-transformer",
+  //   },
+
+  //   setupFilesAfterEnv: ["./setup-jest.js", "jest-extended/all"],
+  //   testMatch: ["**/tests/**/*.js"],
+  //   transformIgnorePatterns: [
+  //     "<rootDir>/node_modules/(?!lodash-es|camelcase-keys)",
+  //   ],
+
   //   transformIgnorePatterns: ["node_modules/(?!axios)"],
 };

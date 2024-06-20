@@ -1,14 +1,14 @@
-import { Router } from "express";
+// import { Router } from "express";
 
-class TodoRoutes {
-  router = Router();
-  routePath = "todo";
+// class TodoRoutes {
+//   router = Router();
+//   routePath = "todo";
 
-  constructor() {
-    const service = createTodoService();
-    this.router.get(this.routePath, this.service.getTodos);
-    this;
-  }
-}
+//   constructor() {
+//     const service = createTodoService();
+//     this.router.get(this.routePath, this.service.getTodos);
+//     this;
+//   }
+// }
 
-export default new TodoRoutes().router;
+// export default new TodoRoutes().router;
