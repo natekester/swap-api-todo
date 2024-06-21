@@ -16,7 +16,7 @@ export default {
   //     "\\.m?jsx?$": "jest-esm-transformer",
   //   },
 
-  //   setupFilesAfterEnv: ["./setup-jest.js", "jest-extended/all"],
+  setupFilesAfterEnv: ["./setup-jest.js", "jest-extended/all"],
   //   testMatch: ["**/tests/**/*.js"],
   //   transformIgnorePatterns: [
   //     "<rootDir>/node_modules/(?!lodash-es|camelcase-keys)",

@@ -16,15 +16,18 @@ const knexConfig = () => {
     NODE_ENV,
   } = process.env;
 
+
   const isTest = CURRENT_ENV === "test" || NODE_ENV === "test";
 
   return {
     client: "postgresql",
     asyncStackTraces: true,
     connection: {
-      host: POSTGRES_HOST,
-      user: POSTGRES_USER,
-      database: isTest ? TEST_DATABASE_NAME : POSTGRES_DATABASE_NAME,
+      host: POSTGRES_HOST || "localhost",
+      user: POSTGRES_USER || "postgres",
+      database: isTest
+        ? TEST_DATABASE_NAME || "todo_swap"
+        : POSTGRES_DATABASE_NAME || "todo_swap_test",
     },
     pool: {
       min: 2,

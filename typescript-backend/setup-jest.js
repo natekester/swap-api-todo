@@ -1,3 +1,5 @@
+// import "dotenv/config.js";
+
 import knx from "./src/repos/knex";
 
 beforeEach(async () => {
