@@ -1,6 +1,9 @@
+import Knex from "knex";
+// @ts-ignore
 import toCamelCase from "camelcase-keys";
-import initializeKnex from "knex";
+// @ts-ignore
 import { snakeCase as toSnakeCase } from "snake-case";
+// @ts-ignore
 import { isArray, isObject } from "lodash-es";
 
 const knexConfig = () => {
@@ -14,7 +17,6 @@ const knexConfig = () => {
   } = process.env;
 
   const isTest = CURRENT_ENV === "test" || NODE_ENV === "test";
-  console.log({ isTest });
 
   return {
     client: "postgresql",
@@ -38,6 +40,6 @@ const knexConfig = () => {
   };
 };
 
-export const knx = initializeKnex(knexConfig());
+export const knx = Knex(knexConfig());
 
 export default knx;

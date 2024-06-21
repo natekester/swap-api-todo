@@ -10,7 +10,7 @@ describe("test the base repository", () => {
   });
 
   let topTrx, trx;
-  let todoTestRepo, chosenTable;
+  let todoTestRepo;
   let todoRepository;
 
   beforeAll(async () => {
