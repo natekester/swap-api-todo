@@ -1,7 +1,11 @@
+import { Knex } from "../../node_modules/knex/types/index";
 import knx from "./knex";
+import { repoInterface } from "./repoInterfaces";
 
-export class BaseRepo {
-  constructor(tableName, trx) {
+export class BaseRepo implements repoInterface {
+  private knx: Knex;
+
+  constructor(public tableName: string, public trx: Knex) {
     this.tableName = tableName;
     //option to instantiate with a transaction for testing env
     if (trx) {

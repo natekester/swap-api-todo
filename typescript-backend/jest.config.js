@@ -1,7 +1,7 @@
 export default {
-  //   transform: {
-  //     "^.+\\.(ts|tsx)$": "ts-jest",
-  //   },
+  transform: {
+    "^.+\\.(ts|tsx)$": "ts-jest",
+  },
   extensionsToTreatAsEsm: [".ts"],
   globals: {
     "ts-jest": {
