@@ -3,7 +3,7 @@ import knx from "./knex";
 import { repoInterface } from "./repoInterfaces";
 
 export class BaseRepo implements repoInterface {
-  private knx: Knex;
+  knx: Knex;
 
   constructor(public tableName: string, public trx: Knex) {
     this.tableName = tableName;
@@ -15,8 +15,8 @@ export class BaseRepo implements repoInterface {
     }
   }
 
-  get(where = {}, select = "*", trx = this.knx) {
-    const baseQuery = trx(this.tableName).where(where).select(select);
+  async get(where = {}, select = "*", trx = this.knx) {
+    const baseQuery = await trx(this.tableName).where(where).select(select);
 
     return baseQuery;
   }
