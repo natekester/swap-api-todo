@@ -1,6 +1,6 @@
 import { Knex } from "../../node_modules/knex/types/index";
 import knx from "./knex";
-import { repoInterface } from "./repoInterfaces";
+import { repoInterface } from "./repo.interface";
 
 export class BaseRepo implements repoInterface {
   knx: Knex;

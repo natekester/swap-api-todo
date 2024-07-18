@@ -1,12 +1,37 @@
-import Knex from "knex";
+import KnexInitialization from "knex";
 // @ts-ignore
 import toCamelCase from "camelcase-keys";
 // @ts-ignore
 import { snakeCase as toSnakeCase } from "snake-case";
 // @ts-ignore
 import { isArray, isObject } from "lodash-es";
+import { Knex } from "../../node_modules/knex/types/index";
 
-const knexConfig = () => {
+type postProcessResponseType = (
+  result: Array<object> | object
+) => Array<object> | object;
+
+type knexConfigType = {
+  client: string;
+  asyncStackTraces: boolean;
+  connection: {
+    host: string;
+    user: string;
+    database: string;
+  };
+  pool: {
+    min: number;
+    max: number;
+  };
+  debug: boolean;
+  postProcessResponse: postProcessResponseType;
+  wrapIdentifier: (
+    value: string,
+    functionToWrap: (string: string) => string
+  ) => any;
+};
+
+const knexConfig = (): Partial<knexConfigType> | any => {
   const {
     POSTGRES_HOST,
     POSTGRES_DATABASE_NAME,
@@ -15,7 +40,6 @@ const knexConfig = () => {
     CURRENT_ENV,
     NODE_ENV,
   } = process.env;
-
 
   const isTest = CURRENT_ENV === "test" || NODE_ENV === "test";
 
@@ -43,6 +67,14 @@ const knexConfig = () => {
   };
 };
 
-export const knx = Knex(knexConfig());
+//let's make sure that we only ever get one knex connection for pooling
+let knex: null | Knex = null;
 
-export default knx;
+export function getKnex(): Knex | any {
+  if (!knex) {
+    knex = KnexInitialization(knexConfig());
+  }
+  return knex;
+}
+
+export default getKnex();
