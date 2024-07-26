@@ -1,11 +1,12 @@
-import { Knex } from "../../node_modules/knex/types/index";
+import { Knex, knex } from "../../node_modules/knex/types/index";
 import knx from "./knex";
-import { repoInterface } from "./repo.interface";
+import { WhereType, repoInterface } from "./types/repo";
+import { TodoRecord } from "./types/todo";
 
-export class BaseRepo implements repoInterface {
+export class BaseRepo<T> implements repoInterface<T> {
   knx: Knex;
 
-  constructor(public tableName: string, public trx: Knex) {
+  constructor(public tableName: Knex.TableDescriptor, public trx: Knex) {
     this.tableName = tableName;
     //option to instantiate with a transaction for testing env
     if (trx) {
@@ -15,7 +16,11 @@ export class BaseRepo implements repoInterface {
     }
   }
 
-  async get(where = {}, select = "*", trx = this.knx) {
+  async get(
+    where: WhereType = {},
+    select: string = "*",
+    trx: Knex = this.knx
+  ): Promise<T[]> {
     const baseQuery = await trx(this.tableName).where(where).select(select);
 
     return baseQuery;

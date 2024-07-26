@@ -1,14 +1,8 @@
 import knx from "../../src/repos/knex";
 
-import { v4 as uuidV4 } from "uuid";
 import { RepositoryFactory } from "../../src/factories/repo.factory";
-import { dbTables } from "../../src/repos/dbtables";
 
 describe("test the base repository", () => {
-  it("tests the method find", async () => {
-    console.log(uuidV4, "test");
-  });
-
   let topTrx, trx;
   let todoTestRepo;
   let todoRepository;

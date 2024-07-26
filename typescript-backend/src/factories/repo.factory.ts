@@ -1,6 +1,7 @@
 import { Knex } from "../../node_modules/knex/types/index";
 import { BaseRepo } from "../repos/base.repo";
 import { dbTables } from "../repos/dbtables";
+import { TodoRecord } from "../repos/types/todo";
 
 //enabling us to easily extend off of base class later
 
@@ -11,6 +12,6 @@ export class RepositoryFactory {
   }
 
   createTodoListRepo = (trx: Knex = this.knx) => {
-    return new BaseRepo(dbTables.todoList, trx);
+    return new BaseRepo<TodoRecord>(dbTables.todoList, trx);
   };
 }
