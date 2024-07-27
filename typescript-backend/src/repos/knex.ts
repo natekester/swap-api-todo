@@ -5,7 +5,6 @@ import toCamelCase from "camelcase-keys";
 import { snakeCase as toSnakeCase } from "snake-case";
 // @ts-ignore
 import { isArray, isObject } from "lodash-es";
-import { Knex, QueryBuilder } from "../../node_modules/knex/types/index";
 
 type postProcessResponseType = (
   result: Array<object> | object

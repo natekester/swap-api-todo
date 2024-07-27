@@ -1,5 +1,5 @@
-import { Knex } from "../../node_modules/knex/types/index";
-import { TestRepoInterface } from "./testRepo";
+import { Knex } from "../../node_modules/knex/types/index.js";
+import { TestRepoInterface } from "./testRepo.js";
 
 export class TestRepository implements TestRepoInterface {
   conn: Knex;

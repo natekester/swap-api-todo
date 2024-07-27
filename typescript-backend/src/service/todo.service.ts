@@ -1,6 +1,6 @@
-import { RepositoryFactory } from "../factories/repo.factory";
-import { getKnex } from "../repos/knex";
-import { Repo } from "../repos/types/repo";
+import { RepositoryFactory } from "../factories/repo.factory.js";
+import { getKnex } from "../repos/knex.js";
+import { Repo } from "../repos/types/repo.js";
 
 export class TodoService {
   todoRepo: Repo<TodoRecord>;

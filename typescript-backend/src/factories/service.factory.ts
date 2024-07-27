@@ -1,4 +1,4 @@
-import { TodoService } from "../service/todo.service";
+import { TodoService } from "../service/todo.service.js";
 
 export class ServiceFactory {
   constructor() {}

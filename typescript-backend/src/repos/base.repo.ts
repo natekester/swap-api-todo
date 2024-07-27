@@ -1,5 +1,5 @@
-import { Knex } from "../../node_modules/knex/types/index";
-import knx from "./knex";
+import { Knex } from "../../node_modules/knex/types/index.js";
+import knx from "./knex.js";
 
 export class BaseRepo<RecordType> {
   knx: Knex;

@@ -1,14 +1,14 @@
-import { Knex } from "../../node_modules/knex/types/index";
-knex
-import { BaseRepo } from "../repos/base.repo";
-import { dbTables } from "../repos/dbtables";
-import knex from "../repos/knex";
+import { Knex } from "../../node_modules/knex/types/index.js";
+knex;
+import { BaseRepo } from "../repos/base.repo.js";
+import { dbTables } from "../repos/dbtables.js";
+import knex from "../repos/knex.js";
 
 //enabling us to easily extend off of base class later
 
 export class RepositoryFactory {
   knx: Knex;
-  constructor(trx: Knex ) {
+  constructor(trx: Knex) {
     this.knx = trx;
   }
 

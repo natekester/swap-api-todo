@@ -1,4 +1,4 @@
-import { Knex } from "../../../node_modules/knex/types/index";
+import { Knex } from "../../../node_modules/knex/types/index.js";
 
 type WhereType = Partial<{
   id: string;

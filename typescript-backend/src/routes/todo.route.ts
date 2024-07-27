@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { ServiceFactory } from "../factories/service.factory";
-import { TodoService } from "../service/todo.service";
+import { ServiceFactory } from "../factories/service.factory.js";
+import { TodoService } from "../service/todo.service.js";
 
 class TodoRoutes {
   router = Router();

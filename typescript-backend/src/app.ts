@@ -1,7 +1,7 @@
 console.log("test");
 import express, { Application, Request, Response } from "express";
 console.log("test");
-import todoRoute from "./routes/todo.route";
+import todoRoute from "./routes/todo.route.js";
 
 const app: Application = express();
 
