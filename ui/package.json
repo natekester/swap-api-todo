@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "esm": "3.2.25",
-    "express": "^4.15.3",
+    "express": "4.19.2",
     "react": "18",
     "react-dom": "18.2.0",
     "react-hot-loader": "4.13.1",

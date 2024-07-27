@@ -1,9 +1,7 @@
-import { Knex, knex } from "../../node_modules/knex/types/index";
+import { Knex } from "../../node_modules/knex/types/index";
 import knx from "./knex";
-import { WhereType, repoInterface } from "./types/repo";
-import { TodoRecord } from "./types/todo";
 
-export class BaseRepo<T> implements repoInterface<T> {
+export class BaseRepo<RecordType> {
   knx: Knex;
 
   constructor(public tableName: Knex.TableDescriptor, public trx: Knex) {
@@ -17,10 +15,10 @@ export class BaseRepo<T> implements repoInterface<T> {
   }
 
   async get(
-    where: WhereType = {},
+    where: Partial<RecordType> = {},
     select: string = "*",
     trx: Knex = this.knx
-  ): Promise<T[]> {
+  ): Promise<RecordType[]> {
     const baseQuery = await trx(this.tableName).where(where).select(select);
 
     return baseQuery;

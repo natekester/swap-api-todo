@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import callHelloWorld from "./api-calls/hello-world.api";
+import getAllTodos from "./api-calls/get-todo.api";
 
 const App = ({ title }) => {
   useEffect(async () => {
-    const res = await callHelloWorld();
+    const res = await getAllTodos();
     console.log({ res });
   }, []);
 

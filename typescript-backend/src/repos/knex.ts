@@ -5,7 +5,7 @@ import toCamelCase from "camelcase-keys";
 import { snakeCase as toSnakeCase } from "snake-case";
 // @ts-ignore
 import { isArray, isObject } from "lodash-es";
-import { Knex } from "../../node_modules/knex/types/index";
+import { Knex, QueryBuilder } from "../../node_modules/knex/types/index";
 
 type postProcessResponseType = (
   result: Array<object> | object
@@ -68,9 +68,9 @@ const knexConfig = (): Partial<knexConfigType> | any => {
 };
 
 //let's make sure that we only ever get one knex connection for pooling
-let knex: null | Knex = null;
+let knex = null;
 
-export function getKnex(): Knex | any {
+export function getKnex() {
   if (!knex) {
     knex = KnexInitialization(knexConfig());
   }
