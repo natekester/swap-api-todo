@@ -4,7 +4,7 @@
   "exports": "./src/index.ts",
   "scripts": {
     "build": "tsc",
-    "dev": "API_HOST=0.0.0.0 API_PORT=443 tsx watch src/index.ts",
+    "dev": "API_HOST=0.0.0.0 API_PORT=8000 tsx watch src/index.ts",
     "start": "node dist/index.ts",
     "test": "NODE_ENV=test cross-env NODE_OPTIONS=--experimental-vm-modules jest"
   },

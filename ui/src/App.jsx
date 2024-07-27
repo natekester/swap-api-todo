@@ -2,9 +2,12 @@ import React, { useEffect } from "react";
 import getAllTodos from "./api-calls/get-todo.api";
 
 const App = ({ title }) => {
-  useEffect(async () => {
-    const res = await getAllTodos();
-    console.log({ res });
+  useEffect(() => {
+    async function fetchData() {
+      const res = await getAllTodos();
+      console.log({ res });
+    }
+    fetchData();
   }, []);
 
   return <div>{title}</div>;
