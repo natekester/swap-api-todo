@@ -10,6 +10,7 @@ class TodoRoutes {
     const serviceFactory = new ServiceFactory();
     this.service = serviceFactory.createTodoListService();
     this.router.get("/all", this.getTodos);
+
   }
 
   getTodos = async (req, res) => {
