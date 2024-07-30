@@ -4,5 +4,6 @@ COPY yarn.lock ./
 RUN yarn install
 COPY . .
 
+
 FROM base as api-dev
 CMD ["yarn", "dev"]
