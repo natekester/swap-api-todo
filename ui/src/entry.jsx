@@ -7,7 +7,6 @@ import ReactDOM from "react-dom/client";
   const root = ReactDOM.createRoot(main);
   root.render(
     <div>
-      <h1>win</h1>
       <App title={"yes"} />
     </div>
   );

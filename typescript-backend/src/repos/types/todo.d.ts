@@ -1,4 +1,4 @@
-type TodoRecord = {
+export type TodoRecord = {
   id: string;
   task: string;
   dueAt: string;

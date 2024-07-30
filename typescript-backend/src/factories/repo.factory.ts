@@ -3,6 +3,7 @@ knex;
 import { BaseRepo } from "../repos/base.repo.js";
 import { dbTables } from "../repos/dbtables.js";
 import knex from "../repos/knex.js";
+import { TodoRecord } from "../repos/types/todo.js";
 
 //enabling us to easily extend off of base class later
 

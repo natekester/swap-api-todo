@@ -1,4 +1,4 @@
-import KnexInitialization from "knex";
+import KnexInitialization, { Knex } from "knex";
 // @ts-ignore
 import toCamelCase from "camelcase-keys";
 // @ts-ignore
@@ -69,7 +69,7 @@ const knexConfig = (): Partial<knexConfigType> | any => {
 //let's make sure that we only ever get one knex connection for pooling
 let knex = null;
 
-export function getKnex() {
+export function getKnex(): Knex {
   if (!knex) {
     knex = KnexInitialization(knexConfig());
   }

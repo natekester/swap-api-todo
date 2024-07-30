@@ -6,7 +6,9 @@ type WhereType = Partial<{
   createdAt: string;
 }>;
 
-export type Repo<RecordType> = {
+export interface Repo<RecordType> {
+  knx?: Knex;
+  tableName?: Knex.TableDescriptor;
   get(
     where: Partial<RecordType>,
     select?: string,
@@ -15,4 +17,4 @@ export type Repo<RecordType> = {
   createTransaction(): Promise<Knex>;
   rollbackTransaction(trx: Knex): Promise<void>;
   commitTransaction(trx: Knex): Promise<void>;
-};
+}
